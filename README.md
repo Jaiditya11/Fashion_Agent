@@ -1,4 +1,4 @@
-# Fashion_Agent
+# Fashion_Agent 🍓
 ## Table of Contents
 1. Conceptual Map
 2. Design Decisions
