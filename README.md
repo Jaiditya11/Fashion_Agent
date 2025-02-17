@@ -19,6 +19,7 @@ https://excalidraw.com/#json=9UrfrR9tSFpvMZbj3UCV2,JQ353h-SPx_Lj8vpCWddfA
    2.  Acting (Tools)
    3.  Observation (Results)
 
-    
+  ![Image]<img width="494" alt="Screenshot 2025-02-17 at 4 11 52 PM" src="https://github.com/user-attachments/assets/e07cd55f-6647-4949-811c-5822c5e5f248" />
+
 
  
