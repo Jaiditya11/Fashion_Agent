@@ -5,11 +5,11 @@
 3. Analysis of Context Management(with example)
 4. Challenges and Improvements
 
-## Conceptual Map 🗺️
+## 🗺️ Conceptual Map 
 Please View the conceptual map from this link as i made it a bit big to fir here.😅
 https://excalidraw.com/#json=9UrfrR9tSFpvMZbj3UCV2,JQ353h-SPx_Lj8vpCWddfA
 
-## Design Decisions 👨🏼‍🎨
+## 👨🏼‍🎨 Design Decisions 
  Key Design Decisions for the **ReAct** Shopping Agent:
  
  ### ReAct Architecture Design
@@ -36,7 +36,7 @@ https://excalidraw.com/#json=9UrfrR9tSFpvMZbj3UCV2,JQ353h-SPx_Lj8vpCWddfA
 
 <img width="576" alt="Screenshot 2025-02-17 at 4 21 31 PM" src="https://github.com/user-attachments/assets/30a5452f-e2f1-484f-ae03-400527f92fa4" />
 
-## Analysis of Context Management(with example)
+## 🧐 Analysis of Context Management(with example)
 
 1. Basic Context Structure
    
@@ -146,7 +146,7 @@ def process_query(self, query: str):
     # 4. Final Response
     return self._format_final_response(context)
 ```
-5.Visual Example of Context Evolution
+5. Visual Example of Context Evolution
 ```
 # Starting Context
 {
@@ -195,5 +195,24 @@ def process_query(self, query: str):
     "search_criteria": {...}
 }
 ```
+## 🌱 Challenges and Improvements
+### Current Challenges
+1. **Query Understanding** : Rigid patter matching using regex,limited to predefined product types and can't understand variation in natural language.
+2. **Error Handling**: Only has basic retry mechanism.
+3. **State Management**: Context resets after each query and has a fixed iteration limit.
+   
+### Implemented Improvement
+1. Adaptive Search : relaxes search criteria.
+   
+<img width="512" alt="Screenshot 2025-02-17 at 4 45 22 PM" src="https://github.com/user-attachments/assets/f4332481-08bf-4fdb-bd36-0ae9029c3472" />
 
- 
+2. Structured Response Format: Clear sepearation of reasoning,actions and results.
+
+<img width="214" alt="Screenshot 2025-02-17 at 4 47 06 PM" src="https://github.com/user-attachments/assets/426b0775-ca16-480b-822a-4c604e580976" />
+
+### Suggested Enhancements
+1. Emplement NLP for better query understanding.
+2. maybe a smart retry stratergy probable making use of different combination of solution.
+3. and obviously using an LLM for performing resoning and tasks.
+4. fine-tuning llm on specific use case data.
+5. Adding caching for frequent queries.
