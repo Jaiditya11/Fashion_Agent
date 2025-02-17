@@ -34,7 +34,8 @@ https://excalidraw.com/#json=9UrfrR9tSFpvMZbj3UCV2,JQ353h-SPx_Lj8vpCWddfA
 
 ### Information Gatering and Decision Making
 
-<img width="480" alt="Screenshot 2025-02-17 at 4 19 44 PM" src="https://github.com/user-attachments/assets/8136a6a8-181c-4d63-92c7-48724404f647" />
+<img width="576" alt="Screenshot 2025-02-17 at 4 21 31 PM" src="https://github.com/user-attachments/assets/30a5452f-e2f1-484f-ae03-400527f92fa4" />
+
 
 
  
