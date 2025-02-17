@@ -40,8 +40,8 @@ https://excalidraw.com/#json=9UrfrR9tSFpvMZbj3UCV2,JQ353h-SPx_Lj8vpCWddfA
 
 1. Basic Context Structure
    
-   ```
-   # Initial empty context
+```
+#Initial Empty Context
 context = {
     "query": "",               # What the user asked for
     "collected_info": {},      # Information gathered so far
