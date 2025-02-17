@@ -216,3 +216,26 @@ def process_query(self, query: str):
 3. and obviously using an LLM for performing resoning and tasks.
 4. fine-tuning llm on specific use case data.
 5. Adding caching for frequent queries.
+
+## How It All Works Together:
+1. Query Flow:
+   ```
+   User Query → ReActShoppingAgent → Extract Criteria → Thought Loop → Final Response
+   ```
+2.Thought Loop:
+ ```
+ Thought → Action → Tool Execution → Observation → Next Thought
+```
+
+3. Integration Points:
+->ReActShoppingAgent uses ShoppingTools for all actions.
+->Context maintains state between iterations.
+->Tools return data that's processed into observations.
+
+4. Example Flow:
+For "white sneakers size 8 under $70 that can arrive by Friday":
+
+->Extracts criteria (white, size 8, $70, sneakers)
+->Searches products
+->Checks shipping for found products
+->Formats response with all information
