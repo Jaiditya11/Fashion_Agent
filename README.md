@@ -222,20 +222,22 @@ def process_query(self, query: str):
 ```
   User Query → ReActShoppingAgent → Extract Criteria → Thought Loop → Final Response
 ```
-2.Thought Loop:
+2. Thought Loop:
  ```
  Thought → Action → Tool Execution → Observation → Next Thought
 ```
 
 3. Integration Points:
+```
 ->ReActShoppingAgent uses ShoppingTools for all actions.
 ->Context maintains state between iterations.
 ->Tools return data that's processed into observations.
-
-4. Example Flow:
+```
+5. Example Flow:
 For "white sneakers size 8 under $70 that can arrive by Friday":
-
+```
 ->Extracts criteria (white, size 8, $70, sneakers)
 ->Searches products
 ->Checks shipping for found products
 ->Formats response with all information
+```
