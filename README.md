@@ -36,6 +36,20 @@ https://excalidraw.com/#json=9UrfrR9tSFpvMZbj3UCV2,JQ353h-SPx_Lj8vpCWddfA
 
 <img width="576" alt="Screenshot 2025-02-17 at 4 21 31 PM" src="https://github.com/user-attachments/assets/30a5452f-e2f1-484f-ae03-400527f92fa4" />
 
+## Analysis of Context Management(with example)
+
+1. Basic Context Structure
+   
+   ```
+   # Initial empty context
+context = {
+    "query": "",               # What the user asked for
+    "collected_info": {},      # Information gathered so far
+    "search_criteria": {}      # What we're looking for
+} 
+ ```
+  
+
 
 
  
