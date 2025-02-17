@@ -24,4 +24,7 @@ ShoppingTools Class contains the structure for products,promo codes & Return Pol
 
 <img width="306" alt="Screenshot 2025-02-17 at 4 13 47 PM" src="https://github.com/user-attachments/assets/c68eedbb-6c16-41ed-bab1-d0629936b12c" />
 
+The data Model for Products:
+<img width="496" alt="Screenshot 2025-02-17 at 4 17 22 PM" src="https://github.com/user-attachments/assets/9fd2d811-1338-4b1a-b0a3-737e64fcdcf6" />
+
  
