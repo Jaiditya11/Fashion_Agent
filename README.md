@@ -48,8 +48,152 @@ context = {
     "search_criteria": {}      # What we're looking for
 } 
  ```
-  
+2. Let's Follow a Real Query
 
+ ```
+ # User asks: "I need white sneakers size 8 under $70 that can arrive by Friday"
 
+# Step 1: Context is initialized
+context = {
+    "query": "I need white sneakers size 8 under $70 that can arrive by Friday",
+    "collected_info": {},  # Empty at start
+    "search_criteria": {   # Extracted from query
+        "product_type": "sneakers",
+        "color": "white",
+        "size": "8",
+        "max_price": 70.0
+    }
+}
+
+# Step 2: After product search
+context["collected_info"]["search_products"] = [
+    {
+        "name": "White Canvas Sneakers",
+        "price": 65.99,
+        "size": "8",
+        "color": "white",
+        "store": "ShoeMart"
+    }
+]
+
+# Step 3: After shipping check
+context["collected_info"]["estimate_shipping"] = {
+    "feasible": True,
+    "cost": 12.99,
+    "estimated_delivery": "2024-03-15"
+}
+```
+3. How the context is used in decision making
+   
+```
+def _next_thought_action(self, context: Dict):
+    # 1. Check if we've searched for products
+    if "search_products" not in context["collected_info"]:
+        return "Need to search for products first", {
+            "tool": "search_products",
+            "params": context["search_criteria"]
+        }
+    
+    # 2. If we found products and need shipping info
+    if ("arrive by" in context["query"] and 
+        "estimate_shipping" not in context["collected_info"]):
+        
+        products = context["collected_info"]["search_products"]
+        return "Need to check shipping", {
+            "tool": "estimate_shipping",
+            "params": {
+                "store": products[0]["store"],
+                "target_date": "2024-03-15"
+            }
+        }
+
+```
+4. Example Flow
+
+```
+# Let's see how a query flows through the system:
+
+def process_query(self, query: str):
+    # 1. Initialize Context
+    context = {
+        "query": query,
+        "collected_info": {},
+        "search_criteria": self._extract_search_criteria(query)
+    }
+    
+    # 2. First Iteration
+    thought, action = self._next_thought_action(context)
+    # Thought: "Need to search for products first"
+    # Action: Search for white sneakers
+    
+    # Execute search
+    search_results = self._execute_action(action)
+    
+    # Update context with search results
+    context["collected_info"]["search_products"] = search_results
+    
+    # 3. Second Iteration
+    thought, action = self._next_thought_action(context)
+    # Thought: "Need to check shipping"
+    # Action: Check shipping for found sneakers
+    
+    # Execute shipping check
+    shipping_info = self._execute_action(action)
+    
+    # Update context with shipping info
+    context["collected_info"]["estimate_shipping"] = shipping_info
+    
+    # 4. Final Response
+    return self._format_final_response(context)
+```
+5.Visual Example of Context Evolution
+```
+# Starting Context
+{
+    "query": "white sneakers size 8 under $70 that can arrive by Friday",
+    "collected_info": {},
+    "search_criteria": {
+        "product_type": "sneakers",
+        "color": "white",
+        "size": "8",
+        "max_price": 70.0
+    }
+}
+
+# After First Action (Product Search)
+{
+    "query": "white sneakers size 8 under $70 that can arrive by Friday",
+    "collected_info": {
+        "search_products": [
+            {
+                "name": "White Canvas Sneakers",
+                "price": 65.99,
+                "size": "8",
+                "store": "ShoeMart"
+            }
+        ]
+    },
+    "search_criteria": {
+        "product_type": "sneakers",
+        "color": "white",
+        "size": "8",
+        "max_price": 70.0
+    }
+}
+
+# After Second Action (Shipping Check)
+{
+    "query": "white sneakers size 8 under $70 that can arrive by Friday",
+    "collected_info": {
+        "search_products": [...],
+        "estimate_shipping": {
+            "feasible": True,
+            "cost": 12.99,
+            "estimated_delivery": "2024-03-15"
+        }
+    },
+    "search_criteria": {...}
+}
+```
 
  
