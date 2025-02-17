@@ -219,9 +219,9 @@ def process_query(self, query: str):
 
 ## How It All Works Together:
 1. Query Flow:
-   ```
-   User Query → ReActShoppingAgent → Extract Criteria → Thought Loop → Final Response
-   ```
+```
+  User Query → ReActShoppingAgent → Extract Criteria → Thought Loop → Final Response
+```
 2.Thought Loop:
  ```
  Thought → Action → Tool Execution → Observation → Next Thought
